@@ -1,0 +1,8 @@
+FROM tdmedia/appdev
+MAINTAINER Rob Taylor <rt@tdmedia.com>
+
+RUN yum -y update; yum clean all
+
+# install supervisord
+RUN yum install -y python-pip && pip install "pip>=1.4,<1.5" --upgrade
+RUN pip install supervisor

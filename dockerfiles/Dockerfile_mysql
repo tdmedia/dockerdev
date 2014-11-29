@@ -1,0 +1,7 @@
+FROM tdmedia/php
+MAINTAINER Rob Taylor <rt@tdmedia.com>
+
+# install mysql - MYSQL
+RUN yum install -y mysql mysql-server
+# chown run dir
+RUN chown -R mysql /var/run/mysqld

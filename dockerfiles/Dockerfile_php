@@ -1,0 +1,9 @@
+FROM tdmedia/httpd
+MAINTAINER Rob Taylor <rt@tdmedia.com>
+
+## REPO SETUP
+# pull in remi repo -- enables php55 and default repo
+RUN rpm -Uvh http://mirrors.mediatemple.net/remi/enterprise/remi-release-6.rpm
+
+# install remi php - PHP
+RUN yum install --enablerepo=remi,remi-php55 -y php php-pear php-pdo php-mcrypt php-process php-pecl-jsonc php-opcache php-apcu php-xml php-pecl-zip php-mbstring php-gd php-cli php-common php-mysqlnd php-intl; yum clean all

@@ -1,0 +1,14 @@
+FROM centos:centos6
+MAINTAINER Rob Taylor <rt@tdmedia.com>
+
+## REPO SETUP
+
+# pull in epel repo
+RUN yum -y install epel-release; yum clean all
+
+## INSTALL
+
+# and friends - BASE
+RUN yum -y install vim-enhanced bash-completion zsh wget tar pwgen openssh-server git tmux acl which sudo bzip2 zip unzip; yum clean all
+
+RUN curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | bash

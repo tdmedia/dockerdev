@@ -1,0 +1,5 @@
+FROM tdmedia/base
+MAINTAINER Rob Taylor <rt@tdmedia.com>
+
+# install httpd - HTTPD
+RUN yum -y install httpd; yum clean all
