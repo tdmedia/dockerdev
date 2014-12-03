@@ -18,9 +18,9 @@ ADD ./conf/php.conf /etc/httpd/conf/php.conf
 ADD ./conf/my.cnf /etc/my.cnf
 ADD ./conf/php.ini /etc/php.ini
 ADD ./conf/smb.conf /etc/samba/smb.conf
-ADD ./conf/bash_profile /user/.bash_profile
+ADD ./conf/bash_profile /home/user/.bash_profile
 ADD ./conf/zshrc /root/.zshrc
-ADD ./conf/zshrc /user/.zshrc
+ADD ./conf/zshrc /home/user/.zshrc
 
 ADD ./conf/milomedia.zsh-theme /root/.oh-my-zsh/themes/milomedia.zsh-theme
 ADD ./conf/milomedia.zsh-theme /home/user/.oh-my-zsh/themes/milomedia.zsh-theme

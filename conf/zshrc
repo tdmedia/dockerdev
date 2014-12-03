@@ -46,7 +46,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git composer symfony2 tmux zsh_reload wd cap bundler)
+plugins=(git composer symfony2 tmux zsh_reload wd)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,7 +103,7 @@ alias get='git '
 ## Symfony aliases
 alias appcl='app/console cache:clear'
 alias appc='app/console '
-alias cap='nocorrect cap'
+# alias cap='nocorrect cap'
 ## Everything else
 alias vi='vim '
 alias ctl='supervisorctl'
