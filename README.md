@@ -5,7 +5,7 @@ cp ~/.ssh/id_dsa ./keys
 
 NOTE: if you have an id_rsa instead, you will need to modify the Dockerfile. Comment out the id_dsa block and uncomment the id_rsa block
 
-# Create the docker image
+# Create the docker dev image
 docker build -t tdmedia/dev .
 
 # start the storage container
@@ -13,7 +13,7 @@ docker run -v /var/lib/mysql -v /web --name storage centos:centos6 true
 
 This only needs to be run one time. If you get the message that a container with the name storage already exists, then you have already done this step.
 
-# start the dev container
+# start / run the dev container
 docker run -i -t -p 80:80 -p 4022:22 -p 445:445 --volumes-from storage --name dev tdmedia/dev
 
 # use your container
@@ -45,7 +45,8 @@ docker start dev
 
 # rebuilding the container
 1. docker stop dev
+2. docker rm dev
 2. docker rmi tdmedia/dev
-3. Pull the latest docker  files
+3. Pull the latest docker files
 4. build the dev container as shown above
 5. run the dev container as shown above

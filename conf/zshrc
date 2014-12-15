@@ -51,7 +51,7 @@ plugins=(git composer symfony2 tmux zsh_reload wd)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-PATH=$HOME/bin:/opt/rh/ruby193/root/usr/bin::/bin:/sbin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin
+PATH=$HOME/bin:/opt/rh/ruby193/root/usr/bin:/bin:/sbin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin
 
 LD_LIBRARY_PATH=/opt/rh/ruby193/root/usr/lib64:
 

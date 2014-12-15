@@ -3,12 +3,10 @@ MAINTAINER Rob Taylor <rt@tdmedia.com>
 
 RUN yum -y update; yum clean all
 
-# Install the latest Ruby
-RUN curl -L get.rvm.io | bash -s stable
-RUN source /etc/profile.d/rvm.sh
-RUN /bin/bash -l -c "rvm requirements"
-RUN /bin/bash -l -c "rvm install ruby"
-RUN /bin/bash -l -c "gem install bundler --no-ri --no-rdoc"
+# We need Ruby 1.9.3 to run Capistrano
+RUN yum install -y centos-release-SCL
+RUN yum install -y ruby193 rubygems
+RUN gem install bundler
 
 # install node
 RUN yum -y install nodejs npm; yum clean all
