@@ -18,34 +18,24 @@ ADD ./conf/php.conf /etc/httpd/conf/php.conf
 ADD ./conf/my.cnf /etc/my.cnf
 ADD ./conf/php.ini /etc/php.ini
 ADD ./conf/smb.conf /etc/samba/smb.conf
-ADD ./conf/bash_profile /home/user/.bash_profile
 ADD ./conf/zshrc /root/.zshrc
-ADD ./conf/zshrc /home/user/.zshrc
-
 ADD ./conf/milomedia.zsh-theme /root/.oh-my-zsh/themes/milomedia.zsh-theme
-ADD ./conf/milomedia.zsh-theme /home/user/.oh-my-zsh/themes/milomedia.zsh-theme
+ADD ./conf/tmux.conf /root/.tmux.conf
 
-RUN chmod 744 /etc/httpd/conf/httpd.conf && chmod 744 /etc/my.cnf
+RUN chmod 744 /etc/httpd/conf/httpd.conf /etc/my.cnf
 
-# add our default user
-RUN useradd -G wheel user
-# and key directories
-RUN mkdir /home/user/.ssh && mkdir /root/.ssh && mkdir /var/run/sshd
+# create key directories
+RUN mkdir /root/.ssh && mkdir /var/run/sshd
 
 # make sure you copy your private key to the conf folder first
-ADD ./keys/id_dsa /home/user/.ssh/id_dsa
 ADD ./keys/id_dsa /root/.ssh/id_dsa
-RUN chmod 600 /home/user/.ssh/id_dsa && chmod 600 /root/.ssh/id_dsa
+RUN chmod 600 /root/.ssh/id_dsa
 
 # If you have rsa, comment out the block above and uncomment the block below
-# ADD ./keys/id_rsa /home/user/.ssh/id_rsa
-# ADD ./keys/id_rsa /home/user/.ssh/id_rsa
-# RUN chmod 600 /home/user/.ssh/id_rsa && chmod 600 /root/.ssh/id_rsa
+# ADD ./keys/id_rsa /root/.ssh/id_rsa
+# RUN chmod 600 /root/.ssh/id_rsa
 
-RUN echo user:user | chpasswd && echo 'root:root' | chpasswd
-
-# passwordless sudo for all wheel users! - OK for dev
-RUN echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+RUN echo 'root:root' | chpasswd
 
 # fix sshd so it will run
 RUN ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key && ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key && sed -ri 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config

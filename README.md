@@ -14,7 +14,7 @@ docker run -v /var/lib/mysql -v /web --name storage centos:centos6 true
 This only needs to be run one time. If you get the message that a container with the name storage already exists, then you have already done this step.
 
 # start / run the dev container
-docker run -i -t -p 80:80 -p 4022:22 -p 445:445 --volumes-from storage --name dev tdmedia/dev
+docker run -it -p 80:80 -p 4022:22 -p 445:445 --volumes-from storage --name dev tdmedia/dev
 
 # use your container
 1. boot2docker ip
