@@ -4,6 +4,7 @@ MAINTAINER Rob Taylor <rt@tdmedia.com>
 RUN yum -y update; yum clean all
 
 # Install the latest Ruby
+RUN gpg2 --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
 RUN curl -L get.rvm.io | bash -s stable
 RUN source /etc/profile.d/rvm.sh
 RUN /bin/bash -l -c "rvm requirements"
